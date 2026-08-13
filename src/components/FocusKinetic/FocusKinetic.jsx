@@ -8,6 +8,8 @@ import "./FocusKinetic.css";
 import bg1 from "../../assets/images/pexels-hyrlf-meng-317253942-18413963.jpg";
 import bg2 from "../../assets/images/pexels-daniel-maforte-3709229-5544038.jpg";
 import bg3 from "../../assets/images/pexels-abdellahbnz-38019371.jpg";
+import filmGrain from "../../assets/film_grain.mp4";
+import grainImg from "../../assets/grain.jpg";
 
 gsap.registerPlugin(CustomEase, SplitText, ScrambleTextPlugin);
 
@@ -1382,17 +1384,20 @@ export default function FocusKinetic() {
         ))}
       </div>
 
-      {/* Film overlays: prefer video overlay at /src/assets/film_grain.mp4, fallback to grain.jpg */}
+      {/* Film overlays: prefer bundled video overlay, fallback to static grain image */}
       <video
         className="film-grain-video"
-        src="/src/assets/film_grain.mp4"
+        src={filmGrain}
         autoPlay
         loop
         muted
         playsInline
         aria-hidden="true"
       />
-      <div className="film-grain" />
+      <div
+        className="film-grain"
+        style={{ backgroundImage: `url(${grainImg})` }}
+      />
       <div className="film-scanlines" />
       <div className="film-vignette" />
 
